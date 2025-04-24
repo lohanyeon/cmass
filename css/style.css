@@ -1,0 +1,42 @@
+body {
+    background: linear-gradient(to bottom, #ff6600, #ffcc66);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 50px;
+  }
+  .container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #fff0cc;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  }
+  .title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #8b0000;
+  }
+  .subtitle {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  .pizza-image {
+    width: 250px;
+    margin-bottom: 20px;
+  }
+  .button-group button {
+    font-size: 1em;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ff9933;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .button-group button:hover {
+    background-color: #ff6600;
+  }
