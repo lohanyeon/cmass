@@ -22,3 +22,6 @@ npm install -g live-server
 cd [프로젝트 디렉토리]
 live-server
 http://localhost:8080/middle01.html
+
+
+16:9
