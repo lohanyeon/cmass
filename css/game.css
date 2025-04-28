@@ -46,7 +46,7 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 
 /*** 인트로 ***/
 .intro_wrap { width: 1600px; height: 900px; margin: 0 auto; padding-top: 50px; } 
-.game_01 { background: url('../img/bg_01.png') no-repeat; background-size: contain; } 
+.game_01 { postion: relative; background: url('../img/bg_01.png') no-repeat; background-size: contain; z-index: 1; } 
 
 .game_01 h1 { width: 725px; height: 147px; background: url('../img/title_01.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
 .game_01 h2 { width:784px; height: 120px; background: url('../img/title_sub_01.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
@@ -60,7 +60,7 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 
 
 /*** 게임 설명 ***/
-.ex_wrap { position: relative; width: 1600px; height: 900px; margin: 0 auto; padding-top: 50px; background-color: #fff3c4; } 
+.ex_wrap { position: absolute; width: 1600px; top: 0px; left: 0px; height: 900px; margin: 0 auto; padding-top: 50px; background-color: #fff3c4; z-index: 2; } 
 .ex_title { width: 395px; height: 106px; background: url('../img/ex_title.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
 .btn_close { position: absolute; right: 25px; top: 20px; width: 60px; height: 60px; background: url('../img/btn_close.png') no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; } 
 
@@ -81,16 +81,20 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 .qs_main { display: flex; flex-direction: row; justify-content: space-between; padding-top: 35px; }
 .qs_box { position: relative; width: 935px; height: 710px; background-color: #fff; border: solid 1px #d3d4d6; border-radius: 30px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); padding: 35px 48px; }
 .qs_title { font-size: 30px; padding: 10px 20px; background: #f6f8ea; border-radius: 30px; color: #000; box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); text-align: center; font-weight: 500; margin-bottom: 40px;}
-.qs_txt { display: flex; flex-direction: row; gap: 30px; font-size: 30px;}
+.qs_txt { position: relative; display: flex; flex-direction: row; gap: 30px; font-size: 30px;}
 .qs_txt p { width: 700px; display: flex; flex-direction: row; gap: 30px; font-size: 40px; font-weight: 500; line-height: 60px; }
-.qs_num { width: 90px; height: 90px; text-align: center; line-height: 90px; background-color: #ed6d1f; color: #fff; font-family: 'WAGURITTF'; font-size: 50px; border-radius: 20px;}
-.font_red { color: red;}
+.qs_num { width: 90px; height: 90px; text-align: center; line-height: 90px; background-color: #e5e5e5; color: #000; font-family: 'WAGURITTF'; font-size: 50px; border-radius: 20px;}
+.check_o { position: absolute; left:-47px; top: -25px; z-index: 2; width: 180px; height: 149px; background: url('../img/check_o.png') no-repeat; background-size: contain; text-indent: -9999px; font-size: 0;}
+.check_x { position: absolute; left:-47px; top: -25px; z-index: 2; width: 180px; height: 149px; background: url('../img/check_x.png') no-repeat; background-size: contain; text-indent: -9999px; font-size: 0;}
+
+.font_red { color: #a22d2d; font-weight: bold;}
 
 .check_wrap { position: absolute; left: 27%; bottom: 60px; display: flex; flex-direction: row; gap: 30px; justify-content: center; padding-top: 10px; } 
 .btn_check { position: relative;}
+.btn_bg { width: 205px; height: 205px; background: url(../img/btn_bg.png) no-repeat; background-size: contain; text-align: center; font-size: 40px; font-weight: 500;}
+.btn_bg_x { width: 205px; height: 205px; background: url(../img/btn_bg_x.png) no-repeat; background-size: contain; text-align: center; font-size: 40px; font-weight: 500;}
 .btn_o { width: 205px; height: 205px; background: url(../img/btn_o.png) no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; }
 .btn_x { width: 205px; height: 205px; background: url(../img/btn_x.png) no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; }
-.check_o { position: absolute; left: -30px; top: -20px; z-index: 2; width: 260px; height: 237px; background: url('../img/check_o.png') no-repeat; background-size: contain; text-indent: -9999px; font-size: 0;}
 
 .item_list { display: flex; flex-direction: row; flex-wrap: wrap; width: 460px; gap: 10px; }
 .item_list li { width: 205px; height: 186px; background: url('../img/item_bg.png') no-repeat; background-size: contain; margin-left: 20px; }

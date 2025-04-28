@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="css/font/pretendard-subset.css"/>
     <script type="text/javascript" src="js/GoogleTranslate.js"></script>
     <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
-    <script type="text/javascript" src="js/M-1-13.js"></script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=GoogleTranslateInitCallback"></script>
 </head>
 <body>
@@ -52,10 +51,16 @@
     </section>
 
     <!-- 문제풀이 게임 시작 -->
-    <section class="game_wrap question">
+    <section class="game_wrap">
         <ul class="qs_list">
-            <li>1</li>
-            <li>2</li>
+            <li class="pass"><!-- 문제 풀면 .pass 추가 -->
+                <span class="pass_o"></span><!-- 문제 맞추면 span.pass_o 추가 -->
+                1
+            </li>
+            <li class="pass">
+                <span class="pass_x"></span><!-- 문제 틀리면 span.pass_x 추가 -->
+                2
+            </li>
             <li>3</li>
             <li>4</li>
             <li>5</li>
@@ -68,7 +73,15 @@
                     <span class="qs_num">1</span>
                     <p>컴퓨팅 시스템을 이용하여 문제를 해결하면 사람이 직접 해결할 때보다 더 많은 양의 데이터를 더 빠르게 처리할 수 있다. </p>
                 </div>
-                <div class="check_wrap"></div>
+                <div class="check_wrap">
+                    <div class="btn_check">
+                        <button class="btn_o" aria-label="오">오</button>
+                        <span class="check_o">정답</span><!-- 정답이면 나타남 -->
+                    </div>
+                    <div class="btn_check">
+                        <button class="btn_x" aria-label="엑스">엑스</button>
+                    </div>
+                </div>
             </div>
             <div class="item_wrap">
                 <ul class="item_list">
@@ -115,7 +128,7 @@
     </section>
 
     <!-- 요리만들기 -->
-     <section class="game_wrap cook">
+     <section class="game_wrap">
         <ul class="qs_list">
             <li class="pass"><!-- 문제 풀면 .pass 추가 -->
                 <span class="pass_o"></span><!-- 문제 맞추면 span.pass_o 추가 -->
