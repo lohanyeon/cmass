@@ -1,58 +1,57 @@
 class PizzaGame {
     constructor() {
-        this.stage = "01";
-        this.title = "떡뽁이 만들기";
-        this.food = "떡뽁이";
-        this.firstStageName = "떡볶이가 담길 그릇";
+        this.stage = "02";
+        this.title = "피자 만들기";
+        this.food = "피자";
+        this.firstStageName = "피자가 담길 도우";
         this.questions = [
             {
-                type: "OX",
-                text: "컴퓨팅 시스템을 이용하여 문제를 해결하면 사람이 직접 해결할 때보다 더 많은 양의 데이터를 더 빠르게 처리할 수 있다",
-                correctAnswer: "O",
-                ingredients: ["떡볶이 소스", "떡"],
+                type: "MULTI",
+                text: "데이터를 일정 간격으로 끊어서 0 또는 1과 같이 구분되는 값으로 표현하는 방식은 무엇인가?",
+                correctAnswer: "2",
+                options: ["아날로그", "디지털"],
+                ingredients: ["토마토 소스", "치즈"],
             },
             {
                 type: "OX",
-                text: "컴퓨팅 시스템에서 정보는 “입력 -> 출력 -> 처리” 순으로 작업이 이루어진다",
+                text: "문자, 이미지, 소리, 동영상과 같은 일상생활 데이터는 컴퓨터 내부에서 모두 아날로그로 처리된다.",
                 correctAnswer: "X",
-                ingredients: ["어묵"],
+                ingredients: ["피망"],
+            },
+            {
+                type: "OX",
+                text: "설문 조사는 주관적인 생각이나 정보를 효율적으로 수집할 때 적합하다.",
+                correctAnswer: "O",
+                ingredients: ["햄"],
             },
             {
                 type: "MULTI",
-                text: "사용자가 컴퓨터를 편리하게 사용할 수 있도록 도와주는 소프트웨어이다.",
-                correctAnswer: "2",
-                options: ["센서", "운영체제"],
-                ingredients: ["파"],
-            },
-            {
-                type: "MULTI",
-                text: "주변 환경의 상태를 감지하는 피지컬 컴퓨팅 시스템의 입력 장치이다",
+                text: "()는 데이터를 행과 열을 기준으로 나열하는 방법으로, 각 데이터가 가진 여러 개의 속성을 기준으로 정리할 때 유용한 구조화 방법이다.",
                 correctAnswer: "1",
-                options: ["센서", "LED 디스플레이"],
-                ingredients: ["치즈"],
+                options: ["표", "리스트"],
+                ingredients: ["양파"],
             },
             {
-                type: "MULTI",
-                text: "피지컬 컴퓨팅 시스템에서 구동기는 OO 장치이다. ",
-                correctAnswer: "2",
-                options: ["처리", "출력"],
-                ingredients: ["삶은 달걀"],
+                type: "OX",
+                text: "데이터 분석은 구조화된 데이터를 바탕으로 데이터 간의 관계를 파악하고 데이터에 담긴 여러 의미를 해석하는 것이다.",
+                correctAnswer: "O",
+                ingredients: ["버섯"],
             },
         ];
         this.allIngredients = [
-            "떡볶이 소스",
-            "떡",
-            "어묵",
-            "파",
+            "토마토 소스",
             "치즈",
-            "삶은 달걀",
+            "피망",
+            "햄",
+            "양파",
+            "버섯",
         ];
         this.currentIndex = 0;
         this.collectedIngredients = [];
   
         this.init();
     }
-  
+
     init() {
         this.setIntro();
         this.setQsList();
