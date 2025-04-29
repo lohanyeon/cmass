@@ -154,7 +154,7 @@ class PizzaGame {
         if (userAnswer === correct) {
             // 정답 처리
             this.collectedIngredients.push(...this.questions[this.currentIndex].ingredients);
-
+            
             // li에 pass_o 추가
             const span = document.createElement('span');
             span.className = 'pass_o';
@@ -232,16 +232,31 @@ class PizzaGame {
         document.querySelector('.btn_cook').addEventListener('click', () => this.makeFood());
         setTimeout(() => {
             alert('문제를 모두 풀었습니다! 음식 만들기를 누르세요.');
-        }, 1200);
+        }, 1000);
     }
   
     showElement(selector, filterClass = null) {
-        const elements = document.querySelectorAll(selector);
+        let elements = [];
+    
+        if (typeof selector === 'string') {
+            elements = document.querySelectorAll(selector);
+        } else if (selector instanceof Element || selector instanceof HTMLImageElement) {
+            elements = [selector]; // DOM객체면 바로 배열로 처리
+        }
+    
         elements.forEach(el => {
             if (!filterClass || el.classList.contains(filterClass)) {
+                el.style.visibility = 'visible';
+                el.style.pointerEvents = 'auto';
                 el.style.opacity = 0;
-                el.style.display = 'block';
                 el.style.transition = 'opacity 0.5s';
+    
+                el.style.position = 'absolute';
+                el.style.top = '0';
+                el.style.left = '50%';
+                el.style.transform = 'translateX(-50%)';
+                el.style.zIndex = '1';
+    
                 requestAnimationFrame(() => {
                     el.style.opacity = 1;
                 });
@@ -250,32 +265,51 @@ class PizzaGame {
     }
     
     hideElement(selector, filterClass = null) {
-        const elements = document.querySelectorAll(selector);
+        let elements = [];
+    
+        if (typeof selector === 'string') {
+            elements = document.querySelectorAll(selector);
+        } else if (selector instanceof Element || selector instanceof HTMLImageElement) {
+            elements = [selector];
+        }
+    
         elements.forEach(el => {
             if (!filterClass || el.classList.contains(filterClass)) {
                 el.style.transition = 'opacity 0.5s';
                 el.style.opacity = 0;
-                setTimeout(() => {
-                    el.style.display = 'none';
-                }, 500);
+                el.style.pointerEvents = 'none';
+                el.style.visibility = 'hidden';
+                el.style.zIndex = '0';
             }
         });
-    }      
+    }     
 
     showCollectedIngredients() {
-        const itemImages = document.querySelectorAll('.item_list li img');
+        const questionImages = document.querySelectorAll('.game_wrap.question .item_list li img');
+        const cookImages = document.querySelectorAll('.game_wrap.cook .item_list li img');
     
-        if (this.currentIndex === 0) {
-            // 1단계: 떡볶이 소스(0) + 떡(1)
-            this.showElement('.item_list li:nth-child(1) img');
-            this.showElement('.item_list li:nth-child(2) img');
-        } else {
-            // 2단계부터는 한 개씩
-            const targetIndex = this.currentIndex + 1; // 2단계(currentIndex=1)이면 2번째 이미지 보여야 함
-            this.showElement(`.item_list li:nth-child(${targetIndex + 1}) img`);
-        }
+        if (!this.questions[this.currentIndex]) return;
+    
+        const ingredients = this.questions[this.currentIndex].ingredients;
+    
+        ingredients.forEach(ingredient => {
+            const index = this.allIngredients.indexOf(ingredient);
+            if (index !== -1) {
+                const qImg = questionImages[index];
+                const cImg = cookImages[index];
+    
+                [qImg, cImg].forEach(img => {
+                    if (img) {
+                        img.style.visibility = 'visible';
+                        img.style.pointerEvents = 'auto';
+                        img.style.display = 'block';
+                        img.style.opacity = 1;
+                    }
+                });
+            }
+        });
     }
-
+    
     playSound(type) {
         let audio;
         if (type === 'correct') {
@@ -332,6 +366,17 @@ class PizzaGame {
         });
     }
 
+    showResultPopup() {
+        const correctCount = this.collectedIngredients.length;
+        if (correctCount === 5) {
+            this.showElement('.pop_03');
+        } else if (correctCount >= 2) {
+            this.showElement('.pop_02');
+        } else {
+            this.showElement('.pop_01');
+        }
+    }    
+
     makeFood() {
         // console.log('음식 만들기 시작!');
         const cookImages = document.querySelectorAll('.cook_box img');
@@ -355,6 +400,10 @@ class PizzaGame {
                 }, i * 500);
             }
         });
+
+        setTimeout(() => {
+            this.showResultPopup();
+        }, this.collectedIngredients.length * 500 + 500); 
     }
 }
   
