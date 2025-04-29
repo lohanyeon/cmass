@@ -246,16 +246,21 @@ class PizzaGame {
     
         elements.forEach(el => {
             if (!filterClass || el.classList.contains(filterClass)) {
+                el.classList.add('show');
                 el.style.visibility = 'visible';
                 el.style.pointerEvents = 'auto';
                 el.style.opacity = 0;
                 el.style.transition = 'opacity 0.5s';
     
-                el.style.position = 'absolute';
-                el.style.top = '0';
-                el.style.left = '50%';
-                el.style.transform = 'translateX(-50%)';
-                el.style.zIndex = '1';
+                // position이 fixed가 아니면 absolute로 세팅
+                const computedPosition = window.getComputedStyle(el).position;
+                if (computedPosition !== 'fixed') {
+                    el.style.position = 'absolute';
+                    el.style.top = '0';
+                    el.style.left = '50%';
+                    el.style.transform = 'translateX(-50%)';
+                    el.style.zIndex = '1';
+                }
     
                 requestAnimationFrame(() => {
                     el.style.opacity = 1;
@@ -275,11 +280,18 @@ class PizzaGame {
     
         elements.forEach(el => {
             if (!filterClass || el.classList.contains(filterClass)) {
+                el.classList.add('show');
                 el.style.transition = 'opacity 0.5s';
                 el.style.opacity = 0;
                 el.style.pointerEvents = 'none';
                 el.style.visibility = 'hidden';
-                el.style.zIndex = '0';
+                // ★ 팝업은 z-index 유지해야 하니까
+                if (!el.classList.contains('pop_01') && 
+                    !el.classList.contains('pop_02') && 
+                    !el.classList.contains('pop_03') && 
+                    !el.classList.contains('dimmed')) {
+                    el.style.zIndex = '0'; // 게임화면(intro, question, cook)만 z-index를 0으로
+                }
             }
         });
     }     
@@ -366,17 +378,6 @@ class PizzaGame {
         });
     }
 
-    showResultPopup() {
-        const correctCount = this.collectedIngredients.length;
-        if (correctCount === 5) {
-            this.showElement('.pop_03');
-        } else if (correctCount >= 2) {
-            this.showElement('.pop_02');
-        } else {
-            this.showElement('.pop_01');
-        }
-    }    
-
     makeFood() {
         // console.log('음식 만들기 시작!');
         const cookImages = document.querySelectorAll('.cook_box img');
@@ -405,6 +406,78 @@ class PizzaGame {
             this.showResultPopup();
         }, this.collectedIngredients.length * 500 + 500); 
     }
+
+    showDimmed() {
+        if (!document.querySelector('.dimmed')) {
+            const dim = document.createElement('div');
+            dim.className = 'dimmed';
+            document.body.appendChild(dim);
+        }
+    }
+    
+    hideDimmed() {
+        const dim = document.querySelector('.dimmed');
+        if (dim) {
+            dim.remove();
+        }
+    }
+
+    // 정답 수에 따라 팝업 표시
+    showResultPopup() {
+        const correctCount = this.collectedIngredients.length;
+        this.showDimmed();
+
+        let popupSelector = '';
+        if (correctCount === 6) {
+            popupSelector = '.pop_03';
+        } else if (correctCount >= 2) {
+            popupSelector = '.pop_02';
+        } else {
+            popupSelector = '.pop_01';
+        }
+
+        this.showElement(popupSelector);
+
+        // 닫기 버튼 이벤트
+        document.querySelectorAll('.btn_close_pop').forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.hideElement(popupSelector);
+                this.hideDimmed();
+                this.changeToHomeButton(); // 홈으로 돌아가는 버튼 교체
+            });
+        });
+    }
+    
+    changeToHomeButton() {
+        const btnCook = document.querySelector('.btn_cook');
+        if (btnCook) {
+            btnCook.classList.remove('btn_cook');
+            btnCook.classList.add('btn_home');
+            btnCook.setAttribute('aria-label', '처음으로 돌아갑니다.');
+            btnCook.innerText = ''; // 텍스트 제거 (배경이미지 사용)
+            btnCook.style.background = "url('img/btn_home.png') no-repeat center center";
+            btnCook.style.backgroundSize = "contain";
+    
+            btnCook.addEventListener('click', () => {
+                this.restartGame();
+            }, { once: true }); // 한번만 실행
+        }
+    }
+    
+    restartGame() {
+        // 인트로 화면 보이기
+        /* this.showElement('.intro_wrap');
+        // 나머지 다 숨기기
+        this.hideElement('.game_wrap');
+        this.hideElement('.ex_wrap');
+        this.hideElement('.pop_01');
+        this.hideElement('.pop_02');
+        this.hideElement('.pop_03');
+        this.hideDimmed(); */
+    
+        location.reload(); // 새로고침(완전히 리셋하고 싶으면)
+    }
+    
 }
   
 // 페이지 로딩 완료 후 게임 인스턴스 생성
