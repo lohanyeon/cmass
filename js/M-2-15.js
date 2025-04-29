@@ -212,12 +212,14 @@ class PizzaGame {
             q.options.forEach((option, index) => {
                 const div = document.createElement('div');
                 div.className = 'btn_check';
-                div.innerHTML = `<button class="btn_bg" data-index="${index + 1}" aria-label="${option}">${option}</button>`;
+                // 홀짝에 따라 클래스 결정
+                const btnClass = (index % 2 === 0) ? 'btn_bg_b' : 'btn_bg_r';
+                div.innerHTML = `<button class="${btnClass}" data-index="${index + 1}" aria-label="${option}">${option}</button>`;
                 checkWrap.appendChild(div);
                 // document.querySelector('.btn_bg').addEventListener('click', () => this.submitAnswer(index+1));
             });
     
-            document.querySelectorAll('.btn_bg').forEach(btn => {
+            checkWrap.querySelectorAll('button').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     this.submitAnswer(e.target.getAttribute('data-index'));
                 });

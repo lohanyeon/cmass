@@ -1,6 +1,11 @@
 @charset "UTF-8"; /*reset css*/
 * { font-family: Pretendard, "Pretendard", MalgunGothic, "맑은 고딕", "돋움", Dotum, AppleGothic, Sans-serif, Arial; word-break: keep-all; } 
-body { margin: 0 !important; } 
+html, body {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
 
 html,body,div,p,span,strong,b,em,iframe,pre,
 h1,h2,h3,h4,h5,h6,img,dl,dt,dd,
@@ -92,6 +97,8 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 .check_wrap { position: absolute; left: 27%; bottom: 60px; display: flex; flex-direction: row; gap: 30px; justify-content: center; padding-top: 10px; } 
 .btn_check { position: relative;}
 .btn_bg { width: 205px; height: 205px; background: url(../img/btn_bg.png) no-repeat; background-size: contain; text-align: center; font-size: 40px; font-weight: 500;}
+.btn_bg_b { width: 205px; height: 205px; background: url(../img/btn_bg_b.png) no-repeat; background-size: contain; text-align: center; font-size: 40px; font-weight: 500; color: #fff;}
+.btn_bg_r { width: 205px; height: 205px; background: url(../img/btn_bg_r.png) no-repeat; background-size: contain; text-align: center; font-size: 40px; font-weight: 500; color: #fff;}
 .btn_bg_x { width: 205px; height: 205px; background: url(../img/btn_bg_x.png) no-repeat; background-size: contain; text-align: center; font-size: 40px; font-weight: 500;}
 .btn_o { width: 205px; height: 205px; background: url(../img/btn_o.png) no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; }
 .btn_x { width: 205px; height: 205px; background: url(../img/btn_x.png) no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; }
