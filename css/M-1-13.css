@@ -91,8 +91,10 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 
 .check_wrap { position: absolute; left: 27%; bottom: 60px; display: flex; flex-direction: row; gap: 30px; justify-content: center; padding-top: 10px; } 
 .btn_check { position: relative;}
-.btn_bg { width: 205px; height: 205px; background: url(../img/btn_bg.png) no-repeat; background-size: contain; text-align: center; font-size: 40px; font-weight: 500;}
-.btn_bg_x { width: 205px; height: 205px; background: url(../img/btn_bg_x.png) no-repeat; background-size: contain; text-align: center; font-size: 40px; font-weight: 500;}
+.btn_bg { width: 205px; height: 205px; background: url(../img/btn_bg_b.png) no-repeat; background-size: contain; text-align: center; font-size: 40px; font-weight: 500; color: #fff;}
+.btn_bg_b { width: 205px; height: 205px; background: url(../img/btn_bg_b.png) no-repeat; background-size: contain; text-align: center; font-size: 40px; font-weight: 500; color: #fff;}
+.btn_bg_r { width: 205px; height: 205px; background: url(../img/btn_bg_r.png) no-repeat; background-size: contain; text-align: center; font-size: 40px; font-weight: 500; color: #fff;}
+.btn_bg_x { width: 205px; height: 205px; background: url(../img/btn_bg_x.png) no-repeat; background-size: contain; text-align: center; font-size: 40px; font-weight: 500; color: #000;}
 .btn_o { width: 205px; height: 205px; background: url(../img/btn_o.png) no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; }
 .btn_x { width: 205px; height: 205px; background: url(../img/btn_x.png) no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; }
 .btn_x_x { width: 205px; height: 205px; background: url(../img/btn_x_x.png) no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; }
