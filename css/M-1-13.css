@@ -60,7 +60,7 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 
 
 /*** 게임 설명 ***/
-.ex_wrap { position: absolute; width: 1600px; top: 0px; left: 0px; height: 900px; margin: 0 auto; padding-top: 50px; background-color: #fff3c4; z-index: 2; } 
+.ex_wrap { position: absolute; width: 1600px; top: 0px; left: 50%; transform: translateX(-50%); height: 900px; margin: 0 auto; padding-top: 50px; background-color: #fff3c4; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; } 
 .ex_title { width: 395px; height: 106px; background: url('../img/ex_title.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
 .btn_close { position: absolute; right: 25px; top: 20px; width: 60px; height: 60px; background: url('../img/btn_close.png') no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; } 
 
@@ -95,6 +95,8 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 .btn_bg_x { width: 205px; height: 205px; background: url(../img/btn_bg_x.png) no-repeat; background-size: contain; text-align: center; font-size: 40px; font-weight: 500;}
 .btn_o { width: 205px; height: 205px; background: url(../img/btn_o.png) no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; }
 .btn_x { width: 205px; height: 205px; background: url(../img/btn_x.png) no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; }
+.btn_x_x { width: 205px; height: 205px; background: url(../img/btn_x_x.png) no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; }
+.btn_o_x { width: 205px; height: 205px; background: url(../img/btn_o_x.png) no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; }
 
 .item_list { display: flex; flex-direction: row; flex-wrap: wrap; width: 460px; gap: 10px; }
 .item_list li { width: 205px; height: 186px; background: url('../img/item_bg.png') no-repeat; background-size: contain; margin-left: 20px; }

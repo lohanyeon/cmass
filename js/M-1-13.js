@@ -35,6 +35,14 @@ class PizzaGame {
                 ingredients: ["삶은 달걀"],
             },
         ];
+        this.allIngredients = [
+            "떡볶이 소스",
+            "떡",
+            "어묵",
+            "파",
+            "치즈",
+            "삶은 달걀",
+        ];
         this.currentIndex = 0;
         this.collectedIngredients = [];
   
@@ -49,7 +57,7 @@ class PizzaGame {
         this.hideElement('.game_wrap');
         this.hideElement('.ex_wrap');
         this.hideElement('.qs_main .item_wrap .item_list li .item dt img');
-        this.hideElement('.btn_cook');
+        // this.hideElement('.btn_cook');
         this.hideElement('.pop_01');
         this.hideElement('.pop_02');
         this.hideElement('.pop_03');
@@ -58,17 +66,19 @@ class PizzaGame {
     }
 
     updateItemList() {
-        const itemList = document.querySelectorAll('.item_list li');
-        const allIngredients = [
-            "떡볶이 소스",
-            "떡",
-            "어묵",
-            "파",
-            "치즈",
-            "삶은 달걀"
-        ];
+        const itemList = document.querySelectorAll('.game_wrap .question .item_list li');
+        const cookList = document.querySelectorAll('.game_wrap .cook .item_list li');
     
         itemList.forEach((li, index) => {
+            const ingredient = allIngredients[index];
+            const img = li.querySelector('img');
+            const dd = li.querySelector('dd');
+    
+            if (img) img.alt = ingredient;
+            if (dd) dd.textContent = ingredient;
+        });
+
+        cookList.forEach((li, index) => {
             const ingredient = allIngredients[index];
             const img = li.querySelector('img');
             const dd = li.querySelector('dd');
@@ -156,6 +166,7 @@ class PizzaGame {
             checkSpan.textContent = '정답';
             qsNum.insertAdjacentElement('afterend', checkSpan);
             this.showCollectedIngredients();
+            this.playSound('correct');
         } else {
             // 오답 처리
             const span = document.createElement('span');
@@ -167,12 +178,29 @@ class PizzaGame {
             checkSpan.textContent = '오답';
             qsNum.insertAdjacentElement('afterend', checkSpan);
 
-            // MULTI 문제일 경우 오답 버튼 스타일 변경
-            const selectedButton = document.querySelector(`.btn_bg[data-index="${userAnswer}"]`);
-            if (selectedButton) {
-                selectedButton.classList.remove('btn_bg');
-                selectedButton.classList.add('btn_bg_x');
+            const checkWrap = document.querySelector('.check_wrap');
+            if (this.questions[this.currentIndex].type === 'OX') {
+                if (userAnswer === 'O') {
+                    const btn = checkWrap.querySelector('.btn_o');
+                    if (btn) {
+                        btn.classList.remove('btn_o');
+                        btn.classList.add('btn_o_x');
+                    }
+                } else if (userAnswer === 'X') {
+                    const btn = checkWrap.querySelector('.btn_x');
+                    if (btn) {
+                        btn.classList.remove('btn_x');
+                        btn.classList.add('btn_x_x');
+                    }
+                }
+            } else {
+                const selectedButton = document.querySelector(`.btn_bg[data-index="${userAnswer}"]`);
+                if (selectedButton) {
+                    selectedButton.classList.remove('btn_bg');
+                    selectedButton.classList.add('btn_bg_x');
+                }
             }
+            this.playSound('incorrect');
         }
 
         // 정답/오답과 상관없이 무조건 1초 뒤 다음 문제로
@@ -195,10 +223,16 @@ class PizzaGame {
     }
   
     finishGame() {
-        alert('문제를 모두 풀었습니다! 음식 만들기를 누르세요.');
         this.hideElement('.game_wrap', 'question');
         this.showElement('.game_wrap', 'cook')
-        this.showElement('.btn_cook');
+        // this.showElement('.btn_cook');
+        // 요리판에 문제 상태 복제
+        this.copyQuestionListStatus();
+        this.initCookImages();
+        document.querySelector('.btn_cook').addEventListener('click', () => this.makeFood());
+        setTimeout(() => {
+            alert('문제를 모두 풀었습니다! 음식 만들기를 누르세요.');
+        }, 1200);
     }
   
     showElement(selector, filterClass = null) {
@@ -240,6 +274,87 @@ class PizzaGame {
             const targetIndex = this.currentIndex + 1; // 2단계(currentIndex=1)이면 2번째 이미지 보여야 함
             this.showElement(`.item_list li:nth-child(${targetIndex + 1}) img`);
         }
+    }
+
+    playSound(type) {
+        let audio;
+        if (type === 'correct') {
+            audio = new Audio('sound/correct.mp3');
+        } else if (type === 'incorrect') {
+            audio = new Audio('sound/incorrect.mp3');
+        }
+        if (audio) {
+            audio.play();
+        }
+    }    
+
+    copyQuestionListStatus() {
+        const originalListItems = document.querySelectorAll('.game_wrap.question .qs_list li');
+        const cookListItems = document.querySelectorAll('.game_wrap.cook .qs_list li');
+    
+        originalListItems.forEach((originLi, index) => {
+            const cookLi = cookListItems[index];
+            if (!cookLi) return; // 방어
+    
+            // 기존 클래스(pass 등) 복사
+            if (originLi.classList.contains('pass')) {
+                cookLi.classList.add('pass');
+            }
+    
+            // pass_o / pass_x 복사
+            const passO = originLi.querySelector('.pass_o');
+            const passX = originLi.querySelector('.pass_x');
+    
+            // 먼저 cook 쪽 li 안을 비우고 다시 세팅
+            cookLi.innerHTML = originLi.innerHTML;
+    
+            if (passO) {
+                const span = document.createElement('span');
+                span.className = 'pass_o';
+                cookLi.prepend(span);
+            } else if (passX) {
+                const span = document.createElement('span');
+                span.className = 'pass_x';
+                cookLi.prepend(span);
+            }
+        });
+    }
+
+    initCookImages() {
+        const cookImages = document.querySelectorAll('.cook_box img');
+    
+        cookImages.forEach((img, index) => {
+            if (index !== 0) {
+                img.style.display = 'none';
+                img.style.opacity = 0;
+                img.style.transform = 'scale(0.5)';
+            }
+        });
+    }
+
+    makeFood() {
+        // console.log('음식 만들기 시작!');
+        const cookImages = document.querySelectorAll('.cook_box img');
+        const ingredientMap = {};
+        this.allIngredients.forEach((ingredient, index) => {
+            ingredientMap[ingredient] = index + 1;
+        });
+    
+        // 수집한 재료 순서대로 애니메이션 등장
+        this.collectedIngredients.forEach((ingredient, i) => {
+            const imgIndex = ingredientMap[ingredient];
+            const targetImg = cookImages[imgIndex];
+            if (targetImg) {
+                setTimeout(() => {
+                    targetImg.style.display = 'block';
+                    requestAnimationFrame(() => {
+                        targetImg.style.transition = 'opacity 0.5s, transform 0.5s';
+                        targetImg.style.opacity = 1;
+                        targetImg.style.transform = 'scale(1)';
+                    });
+                }, i * 500);
+            }
+        });
     }
 }
   
