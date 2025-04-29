@@ -1,4 +1,4 @@
-class PizzaGame {
+class TteokbokkiGame {
     constructor() {
         this.stage = "01";
         this.title = "떡뽁이 만들기";
@@ -320,9 +320,26 @@ class PizzaGame {
         this.copyQuestionListStatus();
         this.initCookImages();
         document.querySelector('.btn_cook').addEventListener('click', () => this.makeFood());
+        this.showFinishNotice();
+    }
+
+    showFinishNotice() {
+        // 딤처리 레이어 생성
+        const dim = document.createElement('div');
+        dim.className = 'dimmed custom_alert';
+    
+        // 메시지 박스 생성
+        const alertBox = document.createElement('div');
+        alertBox.className = 'alert_box';
+        alertBox.textContent = '문제를 모두 풀었습니다! 음식 만들기를 눌러보세요.';
+    
+        dim.appendChild(alertBox);
+        document.body.appendChild(dim);
+    
+        // 2초 후 자동 제거 (선택사항)
         setTimeout(() => {
-            alert('문제를 모두 풀었습니다! 음식 만들기를 누르세요.');
-        }, 1000);
+            dim.remove();
+        }, 3000);
     }
   
     showElement(selector, filterClass = null) {
@@ -544,8 +561,8 @@ class PizzaGame {
             btnCook.classList.remove('btn_cook');
             btnCook.classList.add('btn_home');
             btnCook.setAttribute('aria-label', '처음으로 돌아갑니다.');
-            btnCook.innerText = ''; // 텍스트 제거 (배경이미지 사용)
-            btnCook.style.background = "url('img/btn_home.png') no-repeat center center";
+            btnCook.innerText = '처음으로'; // 텍스트 제거 (배경이미지 사용)
+            btnCook.style.background = "url('img/btn_bg_home.png') no-repeat center center";
             btnCook.style.backgroundSize = "contain";
     
             btnCook.addEventListener('click', () => {
@@ -555,16 +572,6 @@ class PizzaGame {
     }
     
     restartGame() {
-        // 인트로 화면 보이기
-        /* this.showElement('.intro_wrap');
-        // 나머지 다 숨기기
-        this.hideElement('.game_wrap');
-        this.hideElement('.ex_wrap');
-        this.hideElement('.pop_01');
-        this.hideElement('.pop_02');
-        this.hideElement('.pop_03');
-        this.hideDimmed(); */
-    
         location.reload(); // 새로고침(완전히 리셋하고 싶으면)
     }
     
@@ -572,5 +579,5 @@ class PizzaGame {
   
 // 페이지 로딩 완료 후 게임 인스턴스 생성
 window.addEventListener('DOMContentLoaded', () => {
-    new PizzaGame();
+    new TteokbokkiGame();
 });
