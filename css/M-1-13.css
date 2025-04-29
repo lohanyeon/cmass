@@ -46,7 +46,7 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 
 /*** 인트로 ***/
 .intro_wrap { width: 1600px; height: 900px; margin: 0 auto; padding-top: 50px; } 
-.game_01 { postion: relative; background: url('../img/bg_01.png') no-repeat; background-size: contain; z-index: 1; } 
+.game_01 { position: relative; background: url('../img/bg_01.png') no-repeat; background-size: contain; z-index: 1; } 
 
 .game_01 h1 { width: 725px; height: 147px; background: url('../img/title_01.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
 .game_01 h2 { width:784px; height: 120px; background: url('../img/title_sub_01.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
@@ -107,6 +107,7 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 .item dd { position: absolute; top: 148px; width: 100%; font-family: 'ONE Mobile Title'; font-size: 24px; text-align: center; }
 
 .btn_cook { width: 352px; height: 112px; background: url('../img/btn_cook.png') no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; }
+.btn_home { width: 307px; height: 112px; background: url('../img/btn_home.png') no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; }
 
 /*** 요리만들기 ***/
 .cook_box { display: flex; align-items: center; width: 935px; height: 710px; background-color: #ffea6e; border: solid 1px #dd9642; border-radius: 30px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); padding: 35px 48px; }
