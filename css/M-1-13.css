@@ -55,8 +55,8 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 .visual_01 img { width: 100%; height: auto; } 
 
 .btn_wrap { display: flex; flex-direction: row; gap: 30px; justify-content: center; padding-top: 20px; } 
-.btn_start { width: 352px; height:130px; background: url('../img/btn_start.png') no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; } 
-.btn_ex { width: 352px; height:130px; background: url('../img/btn_ex.png') no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; } 
+.btn_start { width: 352px; height:130px; background: url('../img/btn_bg_game.png') no-repeat; background-size: contain; font-size: 50px; color: #fff; font-family: 'WAGURITTF'; text-shadow: -2px 0 #c14000, 0 2px #c14000, 2px 0 #c14000, 0 -2px #c14000;} 
+.btn_ex { width: 352px; height:130px; background: url('../img/btn_bg_game.png') no-repeat; background-size: contain; font-size: 50px; color: #fff; font-family: 'WAGURITTF'; text-shadow: -2px 0 #c14000, 0 2px #c14000, 2px 0 #c14000, 0 -2px #c14000; } 
 
 
 /*** 게임 설명 ***/
@@ -106,8 +106,8 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 .item dt { position: absolute; left: 10px; bottom: -125px; }
 .item dd { position: absolute; top: 148px; width: 100%; font-family: 'ONE Mobile Title'; font-size: 24px; text-align: center; }
 
-.btn_cook { width: 352px; height: 112px; background: url('../img/btn_cook.png') no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; }
-.btn_home { width: 307px; height: 112px; background: url('../img/btn_home.png') no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; }
+.btn_cook { width: 352px; height: 112px; background: url('../img/btn_bg_cook.png') no-repeat; background-size: contain; font-size: 50px; color: #fff; font-family: 'WAGURITTF'; text-shadow: -2px 0 #c14000, 0 2px #c14000, 2px 0 #c14000, 0 -2px #c14000;}
+.btn_home { width: 307px; height: 112px; background: url('../img/btn_home.png') no-repeat; background-size: contain; font-size: 50px; color: #fff; font-family: 'WAGURITTF'; text-shadow: -2px 0 #c14000, 0 2px #c14000, 2px 0 #c14000, 0 -2px #c14000; }
 
 /*** 요리만들기 ***/
 .cook_box { display: flex; align-items: center; width: 935px; height: 710px; background-color: #ffea6e; border: solid 1px #dd9642; border-radius: 30px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); padding: 35px 48px; }
@@ -118,11 +118,16 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 /* .pop_01 { width: 600px; height: 482px; background: url(../img/pop_bg_01.png) no-repeat; background-size: contain; }
 .pop_02 { width: 600px; height: 482px; background: url(../img/pop_bg_02.png) no-repeat; background-size: contain; }
 .pop_03 { width: 600px; height: 482px; background: url(../img/pop_bg_03.png) no-repeat; background-size: contain; } */
-.pop_txt { font-family: 'WAGURITTF'; font-size: 45px; text-align: center; padding: 200px 0 60px; }
+
+.pop_title { font-family: 'WAGURITTF'; font-size: 40px; text-align: center; padding-top: 25px; color: #fff; }
+.pop_01 .pop_title {text-shadow: -2px 0 #ce4e00, 0 2px #ce4e00, 2px 0 #ce4e00, 0 -2px #ce4e00; }
+.pop_02 .pop_title {text-shadow: -2px 0 #ba2525, 0 2px #ba2525, 2px 0 #ba2525, 0 -2px #ba2525; }
+.pop_03 .pop_title {text-shadow: -2px 0 #14287e, 0 2px #14287e, 2px 0 #14287e, 0 -2px #14287e; }
+.pop_txt { font-family: 'WAGURITTF'; font-size: 45px; text-align: center; padding: 170px 0 80px; }
 .pop_01 .pop_txt { color: #e96e00; }
 .pop_02 .pop_txt { color: #ea5353; }
 .pop_03 .pop_txt { color: #1f4394; }
-.btn_close_pop { width: 170px; height: 91px; background: url('../img/btn_close_pop.png') no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; }
+.btn_close_pop { width: 170px; height: 91px; background: url('../img/btn_bg_pop.png') no-repeat; background-size: contain; font-size: 50px; color: #fff; font-family: 'WAGURITTF'; text-shadow: -2px 0 #c14000, 0 2px #c14000, 2px 0 #c14000, 0 -2px #c14000; }
 
 /* 딤처리 배경 */
 .dimmed {
@@ -154,9 +159,9 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
     transition: opacity 0.5s;
 }
 
-.pop_01 { background: url(../img/pop_bg_01.png) no-repeat; }
-.pop_02 { background: url(../img/pop_bg_02.png) no-repeat; }
-.pop_03 { background: url(../img/pop_bg_03.png) no-repeat; }
+.pop_01 { background: url(../img/pop_bg_01.png) no-repeat; background-size: contain; }
+.pop_02 { background: url(../img/pop_bg_02.png) no-repeat; background-size: contain; }
+.pop_03 { background: url(../img/pop_bg_03.png) no-repeat; background-size: contain; }
 
 .pop_01.show,
 .pop_02.show,
