@@ -7,13 +7,13 @@ class TteokbokkiGame {
         this.questions = [
             {
                 type: "OX",
-                text: "컴퓨팅 시스템을 이용하여 문제를 해결하면 사람이 직접 해결할 때보다 더 많은 양의 데이터를 더 빠르게 처리할 수 있다",
+                text: "컴퓨팅 시스템을 이용하여 문제를 해결하면 사람이 직접 해결할 때보다 더 많은 양의 데이터를 더 빠르게 처리할 수 있다.",
                 correctAnswer: "O",
                 ingredients: ["떡볶이 소스", "떡"],
             },
             {
                 type: "OX",
-                text: "컴퓨팅 시스템에서 정보는 “입력 -> 출력 -> 처리” 순으로 작업이 이루어진다",
+                text: "컴퓨팅 시스템에서 정보는 “입력 -> 출력 -> 처리” 순으로 작업이 이루어진다.",
                 correctAnswer: "X",
                 ingredients: ["어묵"],
             },
@@ -26,14 +26,14 @@ class TteokbokkiGame {
             },
             {
                 type: "MULTI",
-                text: "주변 환경의 상태를 감지하는 피지컬 컴퓨팅 시스템의 입력 장치이다",
+                text: "주변 환경의 상태를 감지하는 피지컬 컴퓨팅 시스템의 입력 장치이다.",
                 correctAnswer: "1",
                 options: ["센서", "LED 디스플레이"],
                 ingredients: ["치즈"],
             },
             {
                 type: "MULTI",
-                text: "피지컬 컴퓨팅 시스템에서 구동기는 OO 장치이다. ",
+                text: "피지컬 컴퓨팅 시스템에서 구동기는 OO 장치이다.",
                 correctAnswer: "2",
                 options: ["처리", "출력"],
                 ingredients: ["삶은 달걀"],
