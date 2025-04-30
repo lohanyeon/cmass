@@ -61,7 +61,8 @@ class TteokbokkiGame {
 
         document.querySelector('.btn_start').addEventListener('click', () => this.startGame());
         document.querySelector('.btn_ex').addEventListener('click', () => this.showElement('.ex_wrap'));
-        document.querySelector('.btn_close').addEventListener('click', () => this.hideElement('.ex_wrap'));
+        document.querySelector('.ex_wrap .btn_close').addEventListener('click', () => this.hideElement('.ex_wrap'));
+        document.querySelector('.as_wrap .btn_close').addEventListener('click', () => this.hideElement('.as_wrap'));
   
         this.hideElement('.game_wrap');
         this.hideElement('.ex_wrap');
@@ -70,6 +71,8 @@ class TteokbokkiGame {
         this.hideElement('.pop_01');
         this.hideElement('.pop_02');
         this.hideElement('.pop_03');
+        this.hideElement('.pop_04');
+        this.hideElement('.as_wrap');
         
         this.updateItemList();
     }
@@ -179,6 +182,8 @@ class TteokbokkiGame {
     startGame() {
         this.hideElement('.intro_wrap');
         this.showElement('.game_wrap', 'question');
+        document.querySelector('.game_wrap.question .cook_box').style.display = 'none';
+        document.querySelector('.game_wrap.question .btn_cook').style.display = 'none';
         this.showQuestion();
     }
   
@@ -187,10 +192,11 @@ class TteokbokkiGame {
     
         document.querySelector('.qs_title').innerHTML = `첫번째 시도로 문제를 맞출 시 <span class="font_red">${q.ingredients.join('</span>와 <span class=\"font_red\">')}</span> 획득`;
         document.querySelector('.qs_txt .qs_num').textContent = this.currentIndex + 1;
-        document.querySelector('.qs_txt p').textContent = q.text;
+        document.querySelector('.qs_txt p').innerHTML = q.text;
     
         const oldResult = document.querySelector('.qs_txt .check_o, .qs_txt .check_x');
         const checkWrap = document.querySelector('.check_wrap');
+        checkWrap.style.pointerEvents = 'auto';
         checkWrap.innerHTML = '';
 
         if (oldResult) {
@@ -229,6 +235,10 @@ class TteokbokkiGame {
     }
   
     submitAnswer(userAnswer) {
+        // 중복 클릭 방지
+        const checkWrap = document.querySelector('.check_wrap');
+        checkWrap.style.pointerEvents = 'none';
+
         const correct = this.questions[this.currentIndex].correctAnswer;
         const questionListItems = document.querySelectorAll('.qs_list li');
         const currentLi = questionListItems[this.currentIndex];
@@ -313,35 +323,34 @@ class TteokbokkiGame {
     }
   
     finishGame() {
-        this.hideElement('.game_wrap', 'question');
-        this.showElement('.game_wrap', 'cook')
-        // this.showElement('.btn_cook');
-        // 요리판에 문제 상태 복제
-        this.copyQuestionListStatus();
-        this.initCookImages();
-        document.querySelector('.btn_cook').addEventListener('click', () => this.makeFood());
+        this.setDisplay('.game_wrap.question .qs_box', false);
+        this.setDisplay('.game_wrap.question .cook_box', true);
+        this.setDisplay('.game_wrap.question .btn_cook', true);
+        document.querySelector('.game_wrap.question .btn_cook').addEventListener('click', () => this.makeFood());
         this.showFinishNotice();
     }
 
     showFinishNotice() {
-        // 딤처리 레이어 생성
-        const dim = document.createElement('div');
-        dim.className = 'dimmed custom_alert';
+        this.showDimmed();
+        const popupSelector = '.pop_04';
+        this.showElement(popupSelector);
     
-        // 메시지 박스 생성
-        const alertBox = document.createElement('div');
-        alertBox.className = 'alert_box';
-        alertBox.textContent = '문제를 모두 풀었습니다! 음식 만들기를 눌러보세요.';
-    
-        dim.appendChild(alertBox);
-        document.body.appendChild(dim);
-    
-        // 2초 후 자동 제거 (선택사항)
-        setTimeout(() => {
-            dim.remove();
-        }, 3000);
+        // 닫기 버튼 이벤트
+        document.querySelectorAll('.btn_close_pop').forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.hideElement(popupSelector);
+                this.hideDimmed();
+            }, { once: true });
+        });
     }
-  
+
+    setDisplay(selector, show = true) {
+        const el = document.querySelector(selector);
+        if (el) {
+            el.style.display = show ? 'block' : 'none';
+        }
+    }
+      
     showElement(selector, filterClass = null) {
         let elements = [];
     
@@ -396,6 +405,7 @@ class TteokbokkiGame {
                 if (!el.classList.contains('pop_01') && 
                     !el.classList.contains('pop_02') && 
                     !el.classList.contains('pop_03') && 
+                    !el.classList.contains('pop_04') && 
                     !el.classList.contains('dimmed')) {
                     el.style.zIndex = '0'; // 게임화면(intro, question, cook)만 z-index를 0으로
                 }
@@ -439,50 +449,6 @@ class TteokbokkiGame {
         if (audio) {
             audio.play();
         }
-    }    
-
-    copyQuestionListStatus() {
-        const originalListItems = document.querySelectorAll('.game_wrap.question .qs_list li');
-        const cookListItems = document.querySelectorAll('.game_wrap.cook .qs_list li');
-    
-        originalListItems.forEach((originLi, index) => {
-            const cookLi = cookListItems[index];
-            if (!cookLi) return; // 방어
-    
-            // 기존 클래스(pass 등) 복사
-            if (originLi.classList.contains('pass')) {
-                cookLi.classList.add('pass');
-            }
-    
-            // pass_o / pass_x 복사
-            const passO = originLi.querySelector('.pass_o');
-            const passX = originLi.querySelector('.pass_x');
-    
-            // 먼저 cook 쪽 li 안을 비우고 다시 세팅
-            cookLi.innerHTML = originLi.innerHTML;
-    
-            if (passO) {
-                const span = document.createElement('span');
-                span.className = 'pass_o';
-                cookLi.prepend(span);
-            } else if (passX) {
-                const span = document.createElement('span');
-                span.className = 'pass_x';
-                cookLi.prepend(span);
-            }
-        });
-    }
-
-    initCookImages() {
-        const cookImages = document.querySelectorAll('.cook_box img');
-    
-        cookImages.forEach((img, index) => {
-            if (index !== 0) {
-                img.style.display = 'none';
-                img.style.opacity = 0;
-                img.style.transform = 'scale(0.5)';
-            }
-        });
     }
 
     makeFood() {
@@ -550,26 +516,69 @@ class TteokbokkiGame {
             btn.addEventListener('click', () => {
                 this.hideElement(popupSelector);
                 this.hideDimmed();
-                this.changeToHomeButton(); // 홈으로 돌아가는 버튼 교체
+                this.replaceButtonsAfterCooking(); // 홈으로 돌아가는 버튼 교체
             });
         });
     }
+
+    replaceButtonsAfterCooking() {
+        const btnWrap = document.querySelector('.game_wrap.question .btn_wrap');
+        if (!btnWrap) return;
     
-    changeToHomeButton() {
-        const btnCook = document.querySelector('.btn_cook');
-        if (btnCook) {
-            btnCook.classList.remove('btn_cook');
-            btnCook.classList.add('btn_home');
-            btnCook.setAttribute('aria-label', '처음으로 돌아갑니다.');
-            btnCook.innerText = '처음으로'; // 텍스트 제거 (배경이미지 사용)
-            btnCook.style.background = "url('img/btn_bg_home.png') no-repeat center center";
-            btnCook.style.backgroundSize = "contain";
+        btnWrap.innerHTML = ''; // 기존 버튼 제거
     
-            btnCook.addEventListener('click', () => {
-                this.restartGame();
-            }, { once: true }); // 한번만 실행
-        }
+        // 정답보기 버튼
+        const answerBtn = document.createElement('button');
+        answerBtn.className = 'btn_answer';
+        answerBtn.setAttribute('aria-label', '정답을 확인합니다.');
+        answerBtn.textContent = '정답보기';
+        answerBtn.addEventListener('click', () => {
+            this.showAnswerSheet();
+            this.showElement('.as_wrap');
+        });
+    
+        // 처음으로 버튼
+        const homeBtn = document.createElement('button');
+        homeBtn.className = 'btn_home';
+        homeBtn.setAttribute('aria-label', '처음으로 돌아갑니다.');
+        homeBtn.textContent = '처음으로';
+        homeBtn.addEventListener('click', () => {
+            this.restartGame();
+        });
+    
+        btnWrap.appendChild(answerBtn);
+        btnWrap.appendChild(homeBtn);
     }
+
+    showAnswerSheet() {
+        const answerList = document.querySelector('.answer_list');
+        answerList.innerHTML = '';
+    
+        this.questions.forEach((q, index) => {
+            const li = document.createElement('li');
+            const span = document.createElement('span');
+            span.textContent = `${index + 1}.`;
+    
+            const p = document.createElement('p');
+            let answerText = q.correctAnswer;
+    
+            // MULTI 유형은 options에서 찾아서 출력
+            if (q.type === 'MULTI') {
+                const idx = parseInt(q.correctAnswer, 10) - 1;
+                if (q.options && q.options[idx]) {
+                    answerText = q.options[idx];
+                }
+            }
+    
+            p.innerHTML = `${q.text}<strong>(정답: ${answerText})</strong>`;
+    
+            li.appendChild(span);
+            li.appendChild(p);
+            answerList.appendChild(li);
+        });
+    
+        this.showElement('.as_wrap');
+    }    
     
     restartGame() {
         location.reload(); // 새로고침(완전히 리셋하고 싶으면)

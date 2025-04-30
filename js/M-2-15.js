@@ -26,7 +26,7 @@ class PizzaGame {
             },
             {
                 type: "MULTI",
-                text: "()는 데이터를 행과 열을 기준으로 나열하는 방법으로, 각 데이터가 가진 여러 개의 속성을 기준으로 정리할 때 유용한 구조화 방법이다.",
+                text: "(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)는 데이터를 행과 열을 기준으로 나열하는 방법으로, 각 데이터가 가진 여러 개의 속성을 기준으로 정리할 때 유용한 구조화 방법이다.",
                 correctAnswer: "1",
                 options: ["표", "리스트"],
                 ingredients: ["양파"],
@@ -186,7 +186,7 @@ class PizzaGame {
     
         document.querySelector('.qs_title').innerHTML = `첫번째 시도로 문제를 맞출 시 <span class="font_red">${q.ingredients.join('</span>와 <span class=\"font_red\">')}</span> 획득`;
         document.querySelector('.qs_txt .qs_num').textContent = this.currentIndex + 1;
-        document.querySelector('.qs_txt p').textContent = q.text;
+        document.querySelector('.qs_txt p').innerHTML = q.text;
     
         const oldResult = document.querySelector('.qs_txt .check_o, .qs_txt .check_x');
         const checkWrap = document.querySelector('.check_wrap');
