@@ -1,57 +1,57 @@
-class PizzaGame {
+class PatbingsuGame {
     constructor() {
-        this.stage = "02";
-        this.title = "피자 만들기";
-        this.food = "피자";
-        this.firstStageName = "피자가 담길 도우";
+        this.stage = "04";
+        this.title = "팥빙수 만들기";
+        this.food = "팥빙수";
+        this.firstStageName = "팥빙수가 담길 그릇";
         this.questions = [
             {
-                type: "MULTI",
-                text: "데이터를 일정 간격으로 끊어서 0 또는 1과 같이 구분되는 값으로 표현하는 방식은 무엇인가?",
-                correctAnswer: "2",
-                options: ["아날로그", "디지털"],
-                ingredients: ["토마토 소스", "치즈"],
-            },
-            {
                 type: "OX",
-                text: "문자, 이미지, 소리, 동영상과 같은 일상생활 데이터는 컴퓨터 내부에서 모두 아날로그로 처리된다.",
+                text: "인공지능 학습에 사용되는 데이터는 주로 수집된 데이터가 아닌 가상 데이터만 활용된다.",
                 correctAnswer: "X",
-                ingredients: ["피망"],
-            },
-            {
-                type: "OX",
-                text: "설문 조사는 주관적인 생각이나 정보를 효율적으로 수집할 때 적합하다.",
-                correctAnswer: "O",
-                ingredients: ["햄"],
+                ingredients: ["얼음", "콩가루"],
             },
             {
                 type: "MULTI",
-                text: "(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)는 데이터를 행과 열을 기준으로 나열하는 방법으로, 각 데이터가 가진 여러 개의 속성을 기준으로 정리할 때 유용한 구조화 방법이다.",
+                text: "인공지능의 주요 특성 중 하나는 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)이다.",
                 correctAnswer: "1",
-                options: ["표", "리스트"],
-                ingredients: ["양파"],
+                options: ["학습", "기억"],
+                ingredients: ["연유"],
             },
             {
                 type: "OX",
-                text: "데이터 분석은 구조화된 데이터를 바탕으로 데이터 간의 관계를 파악하고 데이터에 담긴 여러 의미를 해석하는 것이다.",
+                text: "인공지능 시스템을 적용하는 데 있어, 문제를 해결하기 위한 데이터와 적합한 알고리즘을 선택하는 것이 중요하다.",
                 correctAnswer: "O",
-                ingredients: ["버섯"],
+                ingredients: ["통팥"],
+            },
+            {
+                type: "MULTI",
+                text: "인공지능 학습에 필요한 데이터는 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)과 분류가 필요하다.",
+                correctAnswer: "1",
+                options: ["수집", "삭제"],
+                ingredients: ["아이스크림"],
+            },
+            {
+                type: "OX",
+                text: "인공지능 학습에 필요한 데이터의 수집은 윤리적 문제를 고려할 필요가 없다.",
+                correctAnswer: "X",
+                ingredients: ["젤리"],
             },
         ];
         this.allIngredients = [
-            "토마토 소스",
-            "치즈",
-            "피망",
-            "햄",
-            "양파",
-            "버섯",
+            "얼음",
+            "콩가루",
+            "연유",
+            "통팥",
+            "아이스크림",
+            "젤리",
         ];
         this.currentIndex = 0;
         this.collectedIngredients = [];
   
         this.init();
     }
-
+  
     init() {
         this.setIntro();
         this.setQsList();
@@ -587,5 +587,5 @@ class PizzaGame {
   
 // 페이지 로딩 완료 후 게임 인스턴스 생성
 window.addEventListener('DOMContentLoaded', () => {
-    new PizzaGame();
+    new PatbingsuGame();
 });

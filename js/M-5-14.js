@@ -1,57 +1,55 @@
-class PizzaGame {
+class SandwichGame {
     constructor() {
-        this.stage = "02";
-        this.title = "피자 만들기";
-        this.food = "피자";
-        this.firstStageName = "피자가 담길 도우";
+        this.stage = "05";
+        this.title = "샌드위치 만들기";
+        this.food = "샌드위치";
+        this.firstStageName = "샌드위치가 담길 그릇";
         this.questions = [
             {
-                type: "MULTI",
-                text: "데이터를 일정 간격으로 끊어서 0 또는 1과 같이 구분되는 값으로 표현하는 방식은 무엇인가?",
-                correctAnswer: "2",
-                options: ["아날로그", "디지털"],
-                ingredients: ["토마토 소스", "치즈"],
-            },
-            {
                 type: "OX",
-                text: "문자, 이미지, 소리, 동영상과 같은 일상생활 데이터는 컴퓨터 내부에서 모두 아날로그로 처리된다.",
-                correctAnswer: "X",
-                ingredients: ["피망"],
-            },
-            {
-                type: "OX",
-                text: "설문 조사는 주관적인 생각이나 정보를 효율적으로 수집할 때 적합하다.",
+                text: "디지털 사회에서는 로봇을 활용한 자동화 분야가 증가하고 있다.",
                 correctAnswer: "O",
+                ingredients: ["식빵", "양상추"],
+            },
+            {
+                type: "OX",
+                text: "디지털 기술의 발달로 현재 직업과 미래 직업은 크게 다르지 않을 것이다.",
+                correctAnswer: "X",
                 ingredients: ["햄"],
             },
             {
-                type: "MULTI",
-                text: "(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)는 데이터를 행과 열을 기준으로 나열하는 방법으로, 각 데이터가 가진 여러 개의 속성을 기준으로 정리할 때 유용한 구조화 방법이다.",
-                correctAnswer: "1",
-                options: ["표", "리스트"],
-                ingredients: ["양파"],
+                type: "OX",
+                text: "디지털 중독을 예방하는 방법에는 운동이나 취미 활동 시간을 늘리는 것이 있다.",
+                correctAnswer: "O",
+                ingredients: ["치즈"],
             },
             {
                 type: "OX",
-                text: "데이터 분석은 구조화된 데이터를 바탕으로 데이터 간의 관계를 파악하고 데이터에 담긴 여러 의미를 해석하는 것이다.",
+                text: "개인 정보를 보호하기 위해서 한 번 정한 비밀번호는 변경하지 않고 계속 사용한다.",
+                correctAnswer: "X",
+                ingredients: ["토마토"],
+            },
+            {
+                type: "OX",
+                text: "저작권을 보호하면 저작자의 창작 의욕을 불러일으켜 좋은 작품을 많이 만들 수 있다.",
                 correctAnswer: "O",
-                ingredients: ["버섯"],
+                ingredients: ["소스"],
             },
         ];
         this.allIngredients = [
-            "토마토 소스",
-            "치즈",
-            "피망",
+            "식빵",
+            "양상추",
             "햄",
-            "양파",
-            "버섯",
+            "치즈",
+            "토마토",
+            "소스",
         ];
         this.currentIndex = 0;
         this.collectedIngredients = [];
   
         this.init();
     }
-
+  
     init() {
         this.setIntro();
         this.setQsList();
@@ -587,5 +585,5 @@ class PizzaGame {
   
 // 페이지 로딩 완료 후 게임 인스턴스 생성
 window.addEventListener('DOMContentLoaded', () => {
-    new PizzaGame();
+    new SandwichGame();
 });

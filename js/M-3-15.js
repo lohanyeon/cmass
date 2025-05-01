@@ -1,57 +1,57 @@
-class PizzaGame {
+class RamenGame {
     constructor() {
-        this.stage = "02";
-        this.title = "피자 만들기";
-        this.food = "피자";
-        this.firstStageName = "피자가 담길 도우";
+        this.stage = "03";
+        this.title = "라면 만들기";
+        this.food = "라면";
+        this.firstStageName = "라면이 담길 그릇";
         this.questions = [
             {
                 type: "MULTI",
-                text: "데이터를 일정 간격으로 끊어서 0 또는 1과 같이 구분되는 값으로 표현하는 방식은 무엇인가?",
+                text: "(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)는 문제 분석을 위해 정의하는 것으로 문제가 해결됐을 때의 상태이다.",
                 correctAnswer: "2",
-                options: ["아날로그", "디지털"],
-                ingredients: ["토마토 소스", "치즈"],
+                options: ["초기 상태", "목표 상태"],
+                ingredients: ["스프", "면"],
             },
             {
                 type: "OX",
-                text: "문자, 이미지, 소리, 동영상과 같은 일상생활 데이터는 컴퓨터 내부에서 모두 아날로그로 처리된다.",
-                correctAnswer: "X",
-                ingredients: ["피망"],
-            },
-            {
-                type: "OX",
-                text: "설문 조사는 주관적인 생각이나 정보를 효율적으로 수집할 때 적합하다.",
+                text: "문제를 해결한은데 필수적이고 중요한 요소를 찾는 과정을 핵심 요소 추출이라 한다.",
                 correctAnswer: "O",
-                ingredients: ["햄"],
+                ingredients: ["고추"],
             },
             {
                 type: "MULTI",
-                text: "(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)는 데이터를 행과 열을 기준으로 나열하는 방법으로, 각 데이터가 가진 여러 개의 속성을 기준으로 정리할 때 유용한 구조화 방법이다.",
-                correctAnswer: "1",
-                options: ["표", "리스트"],
-                ingredients: ["양파"],
+                text: "여러 데이터를 순차적으로 저장할 수 있는 구조를 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)라 한다.",
+                correctAnswer: "2",
+                options: ["변수", "리스트"],
+                ingredients: ["버섯"],
             },
             {
                 type: "OX",
-                text: "데이터 분석은 구조화된 데이터를 바탕으로 데이터 간의 관계를 파악하고 데이터에 담긴 여러 의미를 해석하는 것이다.",
+                text: "주변 환경의 상태를 감지하는 피지컬 컴퓨팅 시스템의 입력 장치이다.",
+                correctAnswer: "X",
+                ingredients: ["파"],
+            },
+            {
+                type: "OX",
+                text: "디버깅이란 테스트 중 발견한 오류의 원인을 분석하고 수정하는 과정이다.",
                 correctAnswer: "O",
-                ingredients: ["버섯"],
+                ingredients: ["달걀"],
             },
         ];
         this.allIngredients = [
-            "토마토 소스",
-            "치즈",
-            "피망",
-            "햄",
-            "양파",
+            "스프",
+            "면",
+            "고추",
             "버섯",
+            "파",
+            "달걀",
         ];
         this.currentIndex = 0;
         this.collectedIngredients = [];
   
         this.init();
     }
-
+  
     init() {
         this.setIntro();
         this.setQsList();
@@ -587,5 +587,5 @@ class PizzaGame {
   
 // 페이지 로딩 완료 후 게임 인스턴스 생성
 window.addEventListener('DOMContentLoaded', () => {
-    new PizzaGame();
+    new RamenGame();
 });

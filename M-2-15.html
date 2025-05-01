@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>피자 만들기</title>
+    <title>떡볶이 만들기</title>
     <link rel="stylesheet" href="css/M-2-15.css">
     <link rel="stylesheet" type="text/css" href="css/font/pretendard.css" />
     <link rel="stylesheet" type="text/css" href="css/font/pretendard-subset.css"/>
@@ -61,19 +61,7 @@
                 </div>
                 <div class="check_wrap"></div>
             </div>
-            <div class="item_wrap">
-                <ul class="item_list"></ul>
-            </div>
-        </section>
-    </section>
-
-    <!-- 요리만들기 -->
-     <section class="game_wrap cook">
-        <ul class="qs_list"></ul>
-
-        <section class="qs_main">
             <div class="cook_box cook_01"></div>
-
             <div class="item_wrap">
                 <ul class="item_list"></ul>
                 <div class="btn_wrap"><button class="btn_cook" aria-label="음식을 만듭니다.">음식 만들기</button></div>
@@ -82,22 +70,33 @@
     </section>
 
     <!-- 결과 팝업 -->
-    <section class="pop_01">
-        <h2 class="pop_title">아쉬워요.</h2>
+    <section class="pop_01"><!-- 0~1개 맞춤 -->
         <div class="pop_txt">맛이 이상해요!</div>
         <div class="btn_wrap"><button class="btn_close_pop" aria-label="팝업을 닫습니다.">닫기</button></div>
     </section>
     
-    <section class="pop_02">
-        <h2 class="pop_title">앗, 잠깐!</h2>
+    <section class="pop_02"><!-- 2~4개 맞춤 -->
         <div class="pop_txt">뭔가 빠진 맛이에요!</div>
         <div class="btn_wrap"><button class="btn_close_pop" aria-label="팝업을 닫습니다.">닫기</button></div>
     </section>
 
-    <section class="pop_03">
-        <h2 class="pop_title">잘 풀었어요!</h2>
+    <section class="pop_03"><!-- 5문제 모두 맞춤 -->
         <div class="pop_txt">완벽한 맛이에요!</div>
         <div class="btn_wrap"><button class="btn_close_pop" aria-label="팝업을 닫습니다.">닫기</button></div>
+    </section>
+
+    <section class="pop_04"><!-- 문제 다 풀면 나오는 팝업 -->
+        <div class="pop_txt">문제를 모두 풀었습니다!<br>음식 만들기를 눌러보세요.</div>
+        <div class="btn_wrap"><button class="btn_close_pop" aria-label="팝업을 닫습니다.">닫기</button></div>
+    </section>
+
+    <!-- 정답보기 -->
+    <section class="as_wrap">
+        <h2 class="as_title">정답 보기</h2>
+        <button class="btn_close" aria-label="정답 보기 창을 닫습니다.">닫기</button>
+        <section class="game_process">
+            <ul class="answer_list"></ul>
+        </section>
     </section>
 </body>
 </html>

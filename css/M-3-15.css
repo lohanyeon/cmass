@@ -46,10 +46,10 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 
 /*** 인트로 ***/
 .intro_wrap { width: 1600px; height: 900px; margin: 0 auto; padding-top: 50px; } 
-.game_01 { position: relative; background: url('../img/bg_01.png') no-repeat; background-size: contain; z-index: 1; } 
+.game_01 { position: relative; background: url('../img/bg_03.png') no-repeat; background-size: contain; z-index: 1; } 
 
-.game_01 h1 { width: 725px; height: 147px; background: url('../img/title_01.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
-.game_01 h2 { width:784px; height: 120px; background: url('../img/title_sub_01.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
+.game_01 h1 { width: 725px; height: 147px; background: url('../img/title_03.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
+.game_01 h2 { width:784px; height: 120px; background: url('../img/title_sub_03.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
 
 .visual_01 { width: 700px; height: 450px; margin: -50px auto 0; } 
 .visual_01 img { width: 100%; height: auto; } 
