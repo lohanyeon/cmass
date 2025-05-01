@@ -48,16 +48,17 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 .intro_wrap { width: 1600px; height: 900px; margin: 0 auto; padding-top: 50px; } 
 .game_01 { position: relative; background: url('../img/bg_02.png') no-repeat; background-size: contain; z-index: 1; } 
 
-.game_01 h1 { width: 725px; height: 147px; background: url('../img/title_02.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
-.game_01 h2 { width:784px; height: 120px; background: url('../img/title_sub_02.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
+.game_01 h1 { width: 636px; height: 147px; background: url('../img/title_02.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
+.game_01 h2 { width:759px; height: 120px; background: url('../img/title_sub_02.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
 
-.visual_01 { width: 700px; height: 450px; margin: -50px auto 0; } 
+.visual_01 { width: 900px; height: 463px; margin: -50px 0 0 30%; } 
 .visual_01 img { width: 100%; height: auto; } 
 
 .btn_wrap { display: flex; flex-direction: row; gap: 30px; justify-content: center; padding-top: 20px; } 
 .btn_start { width: 352px; height:130px; background: url('../img/btn_bg_game.png') no-repeat; background-size: contain; font-size: 50px; color: #fff; font-family: 'WAGURITTF'; text-shadow: -2px 0 #c14000, 0 2px #c14000, 2px 0 #c14000, 0 -2px #c14000; } 
 .btn_ex { width: 352px; height:130px; background: url('../img/btn_bg_game.png') no-repeat; background-size: contain; font-size: 50px; color: #fff; font-family: 'WAGURITTF'; text-shadow: -2px 0 #c14000, 0 2px #c14000, 2px 0 #c14000, 0 -2px #c14000; } 
 
+.pd_t7 { padding-top: 7px !important}
 
 /*** 게임 설명, 정답 보기 ***/
 .ex_wrap { position: absolute; width: 1600px; top: 0px; left: 50%; transform: translateX(-50%); height: 900px; margin: 0 auto; padding-top: 50px; background-color: #fff3c4; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; } 

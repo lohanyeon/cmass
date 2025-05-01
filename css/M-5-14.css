@@ -48,8 +48,8 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 .intro_wrap { width: 1600px; height: 900px; margin: 0 auto; padding-top: 50px; } 
 .game_01 { position: relative; background: url('../img/bg_05.png') no-repeat; background-size: contain; z-index: 1; } 
 
-.game_01 h1 { width: 725px; height: 147px; background: url('../img/title_05.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
-.game_01 h2 { width:784px; height: 120px; background: url('../img/title_sub_05.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
+.game_01 h1 { width: 802px; height: 147px; background: url('../img/title_05.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
+.game_01 h2 { width:802px; height: 120px; background: url('../img/title_sub_05.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
 
 .visual_01 { width: 700px; height: 450px; margin: -50px auto 0; } 
 .visual_01 img { width: 100%; height: auto; } 
@@ -79,8 +79,8 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 /*** 게임 시작 ***/
 .game_wrap { width: 1600px; height: 900px; margin: 0 auto; padding: 30px 65px; background-color: #fff3c4; } 
 .qs_list { display: flex; flex-direction: row; gap: 15px; } 
-.qs_list li { font-family: 'ONE Mobile Title'; width: 40px; height: 40px; border-radius: 50%; background-color: #fdd35c; color: #793729; font-size: 30px; text-align: center; line-height: 40px; border: 2px solid #b74f2c; } 
-.qs_list li.pass { position: relative; z-index: 1; background-color: #ed6d1f; color: #fff; border: 2px solid #bd522b; text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2); } 
+.qs_list li { font-family: 'ONE Mobile Title'; width: 40px; height: 40px; border-radius: 50%; background-color: #cfeeff; color: #2c5db7; border: 2px solid #2c5db7; font-size: 30px; text-align: center; line-height: 40px;  } 
+.qs_list li.pass { position: relative; z-index: 1; background-color: #2c5db7 ; color: #fff; border: 2px solid #153c83; text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2); } 
 .pass_o { position: absolute; left: -6px; top: -6px; z-index: 2; width: 48px; height: 48px; background: url('../img/pass_o.png') no-repeat; background-size: contain; } 
 .pass_x { position: absolute; left: -6px; top: -6px; z-index: 2; width: 48px; height: 48px; background: url('../img/pass_x.png') no-repeat; background-size: contain; } 
 
@@ -119,8 +119,8 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 .btn_home { width: 205px; height: 76px; background: url('../img/btn_bg_home.png') no-repeat; background-size: contain; font-size: 30px; color: #fff; font-family: 'WAGURITTF'; text-shadow: -2px 0 #c14000, 0 2px #c14000, 2px 0 #c14000, 0 -2px #c14000; margin-top: 20px; } 
 
 /*** 요리만들기 ***/
-.cook_box { display: flex; align-items: center; width: 935px; height: 710px; background-color: #ffea6e; border: solid 1px #dd9642; border-radius: 30px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); padding: 35px 48px; } 
-.cook_01 img { width: 850px; height: auto; margin: 0 auto; position: absolute; z-index: 1; } 
+.cook_box { display: flex; align-items: center; width: 935px; height: 710px; background-color: #98dbff; border: solid 1px #4191d5; border-radius: 30px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); padding: 25px 48px; } 
+.cook_01 img { width: auto; height: 670px; margin-left: 80px; position: absolute; z-index: 1; } 
 
 
 /*** 팝업 ***/
