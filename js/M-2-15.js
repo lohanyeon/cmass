@@ -10,7 +10,7 @@ class PizzaGame {
                 text: "데이터를 일정 간격으로 끊어서 0 또는 1과 같이 구분되는 값으로 표현하는 방식은 무엇인가?",
                 correctAnswer: "2",
                 options: ["아날로그", "디지털"],
-                ingredients: ["토마토 소스", "치즈"],
+                ingredients: ["치즈"],
             },
             {
                 type: "OX",
@@ -184,12 +184,13 @@ class PizzaGame {
         document.querySelector('.game_wrap.question .cook_box').style.display = 'none';
         document.querySelector('.game_wrap.question .btn_cook').style.display = 'none';
         this.showQuestion();
+        this.showSourceImg();
     }
   
     showQuestion() {
         const q = this.questions[this.currentIndex];
     
-        document.querySelector('.qs_title').innerHTML = `첫번째 시도로 문제를 맞출 시 <span class="font_red">${q.ingredients.join('</span>와 <span class=\"font_red\">')}</span> 획득`;
+        document.querySelector('.qs_title').innerHTML = `첫 번째 시도로 문제를 맞히면 <span class="font_red">${q.ingredients.join('</span>와 <span class=\"font_red\">')}</span> 획득`;
         document.querySelector('.qs_txt .qs_num').textContent = this.currentIndex + 1;
         document.querySelector('.qs_txt p').innerHTML = q.text;
     
@@ -410,7 +411,15 @@ class PizzaGame {
                 }
             }
         });
-    }     
+    }
+    
+    showSourceImg() {
+        const questionImages = document.querySelectorAll('.game_wrap.question .item_list li img');
+        questionImages[0].style.visibility = 'visible';
+        questionImages[0].style.pointerEvents = 'auto';
+        questionImages[0].style.display = 'block';
+        questionImages[0].style.opacity = 1;
+    }
 
     showCollectedIngredients() {
         const questionImages = document.querySelectorAll('.game_wrap.question .item_list li img');
@@ -459,6 +468,7 @@ class PizzaGame {
         });
     
         // 수집한 재료 순서대로 애니메이션 등장
+        this.collectedIngredients.unshift(Object.keys(ingredientMap)[0]);
         this.collectedIngredients.forEach((ingredient, i) => {
             const imgIndex = ingredientMap[ingredient];
             const targetImg = cookImages[imgIndex];
@@ -530,7 +540,7 @@ class PizzaGame {
         const answerBtn = document.createElement('button');
         answerBtn.className = 'btn_answer';
         answerBtn.setAttribute('aria-label', '정답을 확인합니다.');
-        answerBtn.textContent = '정답보기';
+        answerBtn.textContent = '정답 보기';
         answerBtn.addEventListener('click', () => {
             this.showAnswerSheet();
             this.showElement('.as_wrap');

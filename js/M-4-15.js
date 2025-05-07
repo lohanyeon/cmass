@@ -9,7 +9,7 @@ class PatbingsuGame {
                 type: "OX",
                 text: "인공지능 학습에 사용되는 데이터는 주로 수집된 데이터가 아닌 가상 데이터만 활용된다.",
                 correctAnswer: "X",
-                ingredients: ["얼음", "콩가루"],
+                ingredients: ["콩가루"],
             },
             {
                 type: "MULTI",
@@ -184,12 +184,13 @@ class PatbingsuGame {
         document.querySelector('.game_wrap.question .cook_box').style.display = 'none';
         document.querySelector('.game_wrap.question .btn_cook').style.display = 'none';
         this.showQuestion();
+        this.showSourceImg();
     }
   
     showQuestion() {
         const q = this.questions[this.currentIndex];
     
-        document.querySelector('.qs_title').innerHTML = `첫번째 시도로 문제를 맞출 시 <span class="font_red">${q.ingredients.join('</span>와 <span class=\"font_red\">')}</span> 획득`;
+        document.querySelector('.qs_title').innerHTML = `첫 번째 시도로 문제를 맞히면 <span class="font_red">${q.ingredients.join('</span>와 <span class=\"font_red\">')}</span> 획득`;
         document.querySelector('.qs_txt .qs_num').textContent = this.currentIndex + 1;
         document.querySelector('.qs_txt p').innerHTML = q.text;
     
@@ -410,7 +411,15 @@ class PatbingsuGame {
                 }
             }
         });
-    }     
+    }    
+    
+    showSourceImg() {
+        const questionImages = document.querySelectorAll('.game_wrap.question .item_list li img');
+        questionImages[0].style.visibility = 'visible';
+        questionImages[0].style.pointerEvents = 'auto';
+        questionImages[0].style.display = 'block';
+        questionImages[0].style.opacity = 1;
+    }
 
     showCollectedIngredients() {
         const questionImages = document.querySelectorAll('.game_wrap.question .item_list li img');
@@ -459,6 +468,7 @@ class PatbingsuGame {
         });
     
         // 수집한 재료 순서대로 애니메이션 등장
+        this.collectedIngredients.unshift(Object.keys(ingredientMap)[0]);
         this.collectedIngredients.forEach((ingredient, i) => {
             const imgIndex = ingredientMap[ingredient];
             const targetImg = cookImages[imgIndex];
@@ -530,7 +540,7 @@ class PatbingsuGame {
         const answerBtn = document.createElement('button');
         answerBtn.className = 'btn_answer';
         answerBtn.setAttribute('aria-label', '정답을 확인합니다.');
-        answerBtn.textContent = '정답보기';
+        answerBtn.textContent = '정답 보기';
         answerBtn.addEventListener('click', () => {
             this.showAnswerSheet();
             this.showElement('.as_wrap');

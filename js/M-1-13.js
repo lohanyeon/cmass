@@ -9,31 +9,31 @@ class TteokbokkiGame {
                 type: "OX",
                 text: "컴퓨팅 시스템을 이용하여 문제를 해결하면 사람이 직접 해결할 때보다 더 많은 양의 데이터를 더 빠르게 처리할 수 있다.",
                 correctAnswer: "O",
-                ingredients: ["떡볶이 소스", "떡"],
+                ingredients: ["떡"],
             },
             {
                 type: "OX",
-                text: "컴퓨팅 시스템에서 정보는 “입력 -> 출력 -> 처리” 순으로 작업이 이루어진다.",
+                text: "컴퓨팅 시스템에서 정보는 '입력 → 출력 → 처리' 순으로 작업이 이루어진다.",
                 correctAnswer: "X",
                 ingredients: ["어묵"],
             },
             {
                 type: "MULTI",
-                text: "사용자가 컴퓨터를 편리하게 사용할 수 있도록 도와주는 소프트웨어이다.",
+                text: "(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)는 사용자가 컴퓨터를 편리하게 사용할 수 있도록 도와주는 소프트웨어이다.",
                 correctAnswer: "2",
                 options: ["센서", "운영체제"],
                 ingredients: ["파"],
             },
             {
                 type: "MULTI",
-                text: "주변 환경의 상태를 감지하는 피지컬 컴퓨팅 시스템의 입력 장치이다.",
+                text: "(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)는 주변 환경의 상태를 감지하는 피지컬 컴퓨팅 시스템의 입력 장치이다.",
                 correctAnswer: "1",
                 options: ["센서", "LED 디스플레이"],
                 ingredients: ["치즈"],
             },
             {
                 type: "MULTI",
-                text: "피지컬 컴퓨팅 시스템에서 구동기는 OO 장치이다.",
+                text: "피지컬 컴퓨팅 시스템에서 구동기는 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 장치이다.",
                 correctAnswer: "2",
                 options: ["처리", "출력"],
                 ingredients: ["삶은 달걀"],
@@ -185,12 +185,13 @@ class TteokbokkiGame {
         document.querySelector('.game_wrap.question .cook_box').style.display = 'none';
         document.querySelector('.game_wrap.question .btn_cook').style.display = 'none';
         this.showQuestion();
+        this.showSourceImg();
     }
   
     showQuestion() {
         const q = this.questions[this.currentIndex];
     
-        document.querySelector('.qs_title').innerHTML = `첫번째 시도로 문제를 맞출 시 <span class="font_red">${q.ingredients.join('</span>와 <span class=\"font_red\">')}</span> 획득`;
+        document.querySelector('.qs_title').innerHTML = `첫 번째 시도로 문제를 맞히면 <span class="font_red">${q.ingredients.join('</span>와 <span class=\"font_red\">')}</span> 획득`;
         document.querySelector('.qs_txt .qs_num').textContent = this.currentIndex + 1;
         document.querySelector('.qs_txt p').innerHTML = q.text;
     
@@ -413,6 +414,14 @@ class TteokbokkiGame {
         });
     }     
 
+    showSourceImg() {
+        const questionImages = document.querySelectorAll('.game_wrap.question .item_list li img');
+        questionImages[0].style.visibility = 'visible';
+        questionImages[0].style.pointerEvents = 'auto';
+        questionImages[0].style.display = 'block';
+        questionImages[0].style.opacity = 1;
+    }
+
     showCollectedIngredients() {
         const questionImages = document.querySelectorAll('.game_wrap.question .item_list li img');
         const cookImages = document.querySelectorAll('.game_wrap.cook .item_list li img');
@@ -460,6 +469,7 @@ class TteokbokkiGame {
         });
     
         // 수집한 재료 순서대로 애니메이션 등장
+        this.collectedIngredients.unshift(Object.keys(ingredientMap)[0]);
         this.collectedIngredients.forEach((ingredient, i) => {
             const imgIndex = ingredientMap[ingredient];
             const targetImg = cookImages[imgIndex];
@@ -531,7 +541,7 @@ class TteokbokkiGame {
         const answerBtn = document.createElement('button');
         answerBtn.className = 'btn_answer';
         answerBtn.setAttribute('aria-label', '정답을 확인합니다.');
-        answerBtn.textContent = '정답보기';
+        answerBtn.textContent = '정답 보기';
         answerBtn.addEventListener('click', () => {
             this.showAnswerSheet();
             this.showElement('.as_wrap');

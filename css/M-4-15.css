@@ -67,14 +67,14 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 .as_title { width: 395px; height: 108px; background: url('../img/as_title.png') no-repeat; background-size: contain; margin: 0 auto; text-indent: -9999px; font-size: 0; } 
 .btn_close { position: absolute; right: 25px; top: 20px; width: 60px; height: 60px; background: url('../img/btn_close.png') no-repeat; background-size: contain; text-indent: -9999px; font-size: 0; } 
 
-.game_process { padding: 0 130px; } 
+.game_process { padding: 0 130px; width: 100%; } 
 .game_process h3 { width: fit-content; font-family: 'ONE Mobile Title'; font-size: 40px; color: #2e2a25; font-weight: normal; background-color: #ffd675; padding: 20px 27px 15px; border-top-left-radius: 20px; border-top-right-radius: 20px; margin-left: 40px; } 
 .game_txt { font-family: 'ONE Mobile Title'; font-size: 30px; color: #402925; background-color: #fff; border-radius: 30px; padding: 40px 80px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); line-height: 48px; margin-bottom: 30px; } 
 .game_txt li { margin-bottom: 10px; font-family: 'ONE Mobile Title'; font-size: 30px; color: #402925; } 
 
 .answer_list { font-family: 'ONE Mobile Title'; font-size: 28px; color: #402925; background-color: #fff; border-radius: 30px; padding: 40px 60px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); line-height: 48px; margin-bottom: 30px; margin-top: 70px; }
 .answer_list li { display: flex; justify-content: flex-start; align-items: flex-start; padding: 5px 0; margin: 20px 0; } 
-.answer_list li span { display: inline-block; text-indent: -25px; padding-left: 25px;  } 
+.answer_list li span { display: inline-block; text-indent: -25px; padding-left: 25px; padding-right: 7px;  } 
 .answer_list strong { font-weight: bold; padding-left: 10px; }
 
 /*** 게임 시작 ***/

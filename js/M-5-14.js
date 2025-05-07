@@ -9,7 +9,7 @@ class SandwichGame {
                 type: "OX",
                 text: "디지털 사회에서는 로봇을 활용한 자동화 분야가 증가하고 있다.",
                 correctAnswer: "O",
-                ingredients: ["식빵", "양상추"],
+                ingredients: ["양상추"],
             },
             {
                 type: "OX",
@@ -182,12 +182,13 @@ class SandwichGame {
         document.querySelector('.game_wrap.question .cook_box').style.display = 'none';
         document.querySelector('.game_wrap.question .btn_cook').style.display = 'none';
         this.showQuestion();
+        this.showSourceImg();
     }
   
     showQuestion() {
         const q = this.questions[this.currentIndex];
     
-        document.querySelector('.qs_title').innerHTML = `첫번째 시도로 문제를 맞출 시 <span class="font_red">${q.ingredients.join('</span>와 <span class=\"font_red\">')}</span> 획득`;
+        document.querySelector('.qs_title').innerHTML = `첫 번째 시도로 문제를 맞히면 <span class="font_red">${q.ingredients.join('</span>와 <span class=\"font_red\">')}</span> 획득`;
         document.querySelector('.qs_txt .qs_num').textContent = this.currentIndex + 1;
         document.querySelector('.qs_txt p').innerHTML = q.text;
     
@@ -410,6 +411,14 @@ class SandwichGame {
         });
     }     
 
+    showSourceImg() {
+        const questionImages = document.querySelectorAll('.game_wrap.question .item_list li img');
+        questionImages[0].style.visibility = 'visible';
+        questionImages[0].style.pointerEvents = 'auto';
+        questionImages[0].style.display = 'block';
+        questionImages[0].style.opacity = 1;
+    }
+
     showCollectedIngredients() {
         const questionImages = document.querySelectorAll('.game_wrap.question .item_list li img');
         const cookImages = document.querySelectorAll('.game_wrap.cook .item_list li img');
@@ -457,6 +466,7 @@ class SandwichGame {
         });
     
         // 수집한 재료 순서대로 애니메이션 등장
+        this.collectedIngredients.unshift(Object.keys(ingredientMap)[0]);
         this.collectedIngredients.forEach((ingredient, i) => {
             const imgIndex = ingredientMap[ingredient];
             const targetImg = cookImages[imgIndex];
@@ -528,7 +538,7 @@ class SandwichGame {
         const answerBtn = document.createElement('button');
         answerBtn.className = 'btn_answer';
         answerBtn.setAttribute('aria-label', '정답을 확인합니다.');
-        answerBtn.textContent = '정답보기';
+        answerBtn.textContent = '정답 보기';
         answerBtn.addEventListener('click', () => {
             this.showAnswerSheet();
             this.showElement('.as_wrap');

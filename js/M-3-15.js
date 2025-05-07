@@ -10,11 +10,11 @@ class RamenGame {
                 text: "(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)는 문제 분석을 위해 정의하는 것으로 문제가 해결됐을 때의 상태이다.",
                 correctAnswer: "2",
                 options: ["초기 상태", "목표 상태"],
-                ingredients: ["스프", "면"],
+                ingredients: ["면"],
             },
             {
                 type: "OX",
-                text: "문제를 해결한은데 필수적이고 중요한 요소를 찾는 과정을 핵심 요소 추출이라 한다.",
+                text: "문제를 해결하는 데 필수적이고 중요한 요소를 찾는 과정을 핵심 요소 추출이라 한다.",
                 correctAnswer: "O",
                 ingredients: ["고추"],
             },
@@ -27,7 +27,7 @@ class RamenGame {
             },
             {
                 type: "OX",
-                text: "주변 환경의 상태를 감지하는 피지컬 컴퓨팅 시스템의 입력 장치이다.",
+                text: "복잡한 문제 해결 과정을 처리하기 위해 제어 구조 안에 또 다른 제어 구조를 포함하는 구조를 반복 구조라 한다.",
                 correctAnswer: "X",
                 ingredients: ["파"],
             },
@@ -184,12 +184,13 @@ class RamenGame {
         document.querySelector('.game_wrap.question .cook_box').style.display = 'none';
         document.querySelector('.game_wrap.question .btn_cook').style.display = 'none';
         this.showQuestion();
+        this.showSourceImg();
     }
   
     showQuestion() {
         const q = this.questions[this.currentIndex];
     
-        document.querySelector('.qs_title').innerHTML = `첫번째 시도로 문제를 맞출 시 <span class="font_red">${q.ingredients.join('</span>와 <span class=\"font_red\">')}</span> 획득`;
+        document.querySelector('.qs_title').innerHTML = `첫 번째 시도로 문제를 맞히면 <span class="font_red">${q.ingredients.join('</span>와 <span class=\"font_red\">')}</span> 획득`;
         document.querySelector('.qs_txt .qs_num').textContent = this.currentIndex + 1;
         document.querySelector('.qs_txt p').innerHTML = q.text;
     
@@ -412,6 +413,14 @@ class RamenGame {
         });
     }     
 
+    showSourceImg() {
+        const questionImages = document.querySelectorAll('.game_wrap.question .item_list li img');
+        questionImages[0].style.visibility = 'visible';
+        questionImages[0].style.pointerEvents = 'auto';
+        questionImages[0].style.display = 'block';
+        questionImages[0].style.opacity = 1;
+    }
+
     showCollectedIngredients() {
         const questionImages = document.querySelectorAll('.game_wrap.question .item_list li img');
         const cookImages = document.querySelectorAll('.game_wrap.cook .item_list li img');
@@ -459,6 +468,7 @@ class RamenGame {
         });
     
         // 수집한 재료 순서대로 애니메이션 등장
+        this.collectedIngredients.unshift(Object.keys(ingredientMap)[0]);
         this.collectedIngredients.forEach((ingredient, i) => {
             const imgIndex = ingredientMap[ingredient];
             const targetImg = cookImages[imgIndex];
@@ -530,7 +540,7 @@ class RamenGame {
         const answerBtn = document.createElement('button');
         answerBtn.className = 'btn_answer';
         answerBtn.setAttribute('aria-label', '정답을 확인합니다.');
-        answerBtn.textContent = '정답보기';
+        answerBtn.textContent = '정답 보기';
         answerBtn.addEventListener('click', () => {
             this.showAnswerSheet();
             this.showElement('.as_wrap');
