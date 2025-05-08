@@ -82,7 +82,7 @@ select { -o-appearance: none; -webkit-appearance: none; -moz-appearance: none; a
 .qs_list { display: flex; flex-direction: row; gap: 15px; } 
 .qs_list li { font-family: 'ONE Mobile Title'; width: 40px; height: 40px; border-radius: 50%; background-color: #fdd35c; color: #793729; font-size: 30px; text-align: center; line-height: 40px; border: 2px solid #b74f2c; } 
 .qs_list li.pass { position: relative; z-index: 1; background-color: #ed6d1f; color: #fff; border: 2px solid #bd522b; text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2); } 
-.pass_o { position: absolute; left: -6px; top: -6px; z-index: 2; width: 48px; height: 48px; background: url('../img/pass_o.png') no-repeat; background-size: contain; } 
+.pass_o { position: absolute; left: -5px; top: -6px; z-index: 2; width: 49px; height: 49px; background: url('../img/pass_o.png') no-repeat; background-size: contain; } 
 .pass_x { position: absolute; left: -6px; top: -6px; z-index: 2; width: 48px; height: 48px; background: url('../img/pass_x.png') no-repeat; background-size: contain; } 
 
 .qs_main { display: flex; flex-direction: row; justify-content: space-between; padding-top: 35px; } 
