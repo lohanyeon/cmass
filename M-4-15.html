@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>팝빙수 만들기</title>
+    <title>팥빙수 만들기</title>
     <link rel="stylesheet" href="css/M-4-15.css">
     <link rel="stylesheet" type="text/css" href="css/font/pretendard.css" />
     <link rel="stylesheet" type="text/css" href="css/font/pretendard-subset.css"/>
@@ -15,10 +15,10 @@
 <body>
     <!-- 인트로 -->
     <section class="intro_wrap game_01">
-        <h1></h1>
-        <h2></h2>
+        <h1 tabindex="0"></h1>
+        <h2 tabindex="0"></h2>
         <div class="sr-only"></div>
-        <div class="visual_01"><img src="img/visual_04.png" alt=""></div>
+        <div class="visual_01" tabindex="0"><img src="img/visual_04.png" alt="팥빙수"></div>
         <div class="btn_wrap pd_t0">
             <button class="btn_start" aria-label="게임을 시작합니다.">게임 시작</button>
             <button class="btn_ex" aria-label="게임에 대한 설명입니다.">게임 설명</button>
@@ -27,43 +27,43 @@
 
     <!-- 게임 설명 -->
     <section class="ex_wrap">
-        <h2 class="ex_title">게임 설명</h2>
-        <button class="btn_close" aria-label="게임에 대한 설명창을 닫습니다.">닫기</button>
+        <h2 class="ex_title" tabindex="0">게임 설명</h2>
         <section class="game_process">
-            <h3>1. 게임 목표</h3>
-            <div class="game_txt">
+            <h3 tabindex="0">1. 게임 목표</h3>
+            <div class="game_txt" tabindex="0">
                 각 단계마다 제시된 문제를 해결하여 재료를 획득하고, 이를 통해 음식을 만든다. <br>
                 많은 재료를 모을수록 더욱 맛있는 음식을 만들 수 있다.
             </div>
         </section>
 
         <section class="game_process">
-            <h3>2. 게임 진행</h3>
-            <ul class="game_txt">
+            <h3 tabindex="0">2. 게임 진행</h3>
+            <ul class="game_txt" tabindex="0">
                 <li>① 각 단계에서 주어진 문제를 읽고 올바른 답을 선택한다.</li>
                 <li>② 첫 번째 시도에서 정답을 맞히면 재료를 획득하게 된다.</li>
                 <li>③ 모든 문제를 푼 후, 획득한 재료들이 화면에 표시된다.</li>
                 <li>④ ‘음식 만들기’ 버튼을 누르면 획득한 재료들이 추가되어 음식이 완성된다.</li>
             </ul>
         </section>
+        <button class="btn_close" aria-label="게임에 대한 설명창을 닫습니다.">닫기</button>
     </section>
 
     <!-- 문제풀이 게임 시작 -->
     <section class="game_wrap question">
-        <ul class="qs_list"></ul>
+        <ul class="qs_list" tabindex="0"></ul>
 
         <section class="qs_main">
             <div class="qs_box"><!-- 문제1 -->
-                <div class="qs_title"></div>
-                <div class="qs_txt">
+                <div class="qs_title" tabindex="0"></div>
+                <div class="qs_txt" tabindex="0">
                     <span class="qs_num"></span>
                     <p></p>
                 </div>
                 <div class="check_wrap"></div>
             </div>
-            <div class="cook_box cook_01"></div>
+            <div class="cook_box cook_01" tabindex="0"></div>
             <div class="item_wrap">
-                <ul class="item_list"></ul>
+                <ul class="item_list" tabindex="0"></ul>
                 <div class="btn_wrap"><button class="btn_cook" aria-label="음식을 만듭니다.">음식 만들기</button></div>
             </div>
         </section>
@@ -71,32 +71,32 @@
 
     <!-- 결과 팝업 -->
     <section class="pop_01"><!-- 0~1개 맞춤 -->
-        <div class="pop_txt">맛이 이상해요!</div>
+        <div class="pop_txt" tabindex="0">맛이 이상해요!</div>
         <div class="btn_wrap"><button class="btn_close_pop" aria-label="팝업을 닫습니다.">닫기</button></div>
     </section>
     
     <section class="pop_02"><!-- 2~4개 맞춤 -->
-        <div class="pop_txt">뭔가 빠진 맛이에요!</div>
+        <div class="pop_txt" tabindex="0">뭔가 빠진 맛이에요!</div>
         <div class="btn_wrap"><button class="btn_close_pop" aria-label="팝업을 닫습니다.">닫기</button></div>
     </section>
 
     <section class="pop_03"><!-- 5문제 모두 맞춤 -->
-        <div class="pop_txt">완벽한 맛이에요!</div>
+        <div class="pop_txt" tabindex="0">완벽한 맛이에요!</div>
         <div class="btn_wrap"><button class="btn_close_pop" aria-label="팝업을 닫습니다.">닫기</button></div>
     </section>
 
     <section class="pop_04"><!-- 문제 다 풀면 나오는 팝업 -->
-        <div class="pop_txt">문제를 모두 풀었습니다!<br>음식 만들기를 눌러 보세요.</div>
+        <div class="pop_txt" tabindex="0">문제를 모두 풀었습니다!<br>음식 만들기를 눌러 보세요.</div>
         <div class="btn_wrap"><button class="btn_close_pop" aria-label="팝업을 닫습니다.">닫기</button></div>
     </section>
 
     <!-- 정답보기 -->
     <section class="as_wrap">
-        <h2 class="as_title">정답 보기</h2>
-        <button class="btn_close" aria-label="정답 보기 창을 닫습니다.">닫기</button>
+        <h2 class="as_title" tabindex="0">정답 보기</h2>
         <section class="game_process">
-            <ul class="answer_list"></ul>
+            <ul class="answer_list" tabindex="0"></ul>
         </section>
+        <button class="btn_close" aria-label="정답 보기 창을 닫습니다.">닫기</button>
     </section>
 </body>
 </html>
