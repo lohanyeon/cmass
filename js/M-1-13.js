@@ -13,7 +13,7 @@ class TteokbokkiGame {
             },
             {
                 type: "OX",
-                text: "컴퓨팅 시스템에서 정보는 '입력 → 출력 → 처리' 순으로 작업이 이루어진다.",
+                text: "컴퓨팅 시스템의 동작은 '입력 → 출력 → 처리' 과정으로 이루어진다.",
                 correctAnswer: "X",
                 ingredients: ["어묵"],
             },
@@ -21,7 +21,7 @@ class TteokbokkiGame {
                 type: "MULTI",
                 text: "(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)는 사용자가 컴퓨터를 편리하게 사용할 수 있도록 도와주는 소프트웨어이다.",
                 correctAnswer: "2",
-                options: ["센서", "운영체제"],
+                options: ["기억 장치", "운영체제"],
                 ingredients: ["파"],
             },
             {
